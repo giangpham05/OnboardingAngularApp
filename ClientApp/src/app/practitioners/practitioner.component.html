@@ -1,0 +1,39 @@
+<form novalidate (ngSubmit) = "onFormSubmit()" [formGroup] = "practitionerForm">
+  <div class="form-group row">
+    <label [for]= "submissionDate" class="col-sm-2 col-form-label">Submission Date</label>
+    <div class="col-sm-3">
+      <kendo-datepicker style='width: 100%;'
+        #submissionDate
+        formControlName="submissionDate"
+        [min]="min"
+        [max]="max"
+        [format]="'dd-MMM-yyyy'"
+        [(ngModel)]="value"
+        required>
+      </kendo-datepicker>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label asp-for="ContractType" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-5">
+            <kendo-dropdownlist for="ContractType" name="ContractType" style="width:100%;" on-change="onContractTypeChange"
+                                datatextfield="ContractTypeName"
+                                datavaluefield="ContractTypeId">
+            </kendo-dropdownlist>
+            <span asp-validation-for="ContractType" class="text-danger" />
+        </div>
+        <label asp-for="CommencementDate" class="col-sm-2 col-form-label"></label>
+        <div class="col-sm-3">
+            <kendo-datepicker name='CommencementDate' for="CommencementDate" style='width: 100%;' format="dd-MMM-yyyy"
+                              value="@DateTime.Now" />
+            <span asp-validation-for="CommencementDate" class="text-danger" />
+        </div>
+  </div>
+  <div class="form-group row">
+    <div class="col-sm-5">
+      <button kendoButton type="submit" [primary]="true" [disabled] = "!practitionerForm.valid">
+      Submit
+     </button>
+    </div>
+  </div>
+</form>
