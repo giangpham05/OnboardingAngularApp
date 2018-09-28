@@ -1,3 +1,7 @@
-//$accent: #ff69b4;
+//@import "~bootstrap/scss/bootstrap";
+
 
 @import "~@progress/kendo-theme-material/scss/all";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; }

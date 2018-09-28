@@ -14,17 +14,17 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
 import { NotificationModule } from '@progress/kendo-angular-notification';
 
 import { SharedModule } from './../shared/shared.module';
-import { PractitionerComponent } from './practitioner.component';
-import { PractitionerRepositoryService } from './practitioner-repository.service';
+import { OnboardingPractitionerComponent } from './onboarding-practitioner.component';
+import { PractitionerRepositoryService } from '../core/practitioner-repository.service';
 
 @NgModule({
-    declarations: [PractitionerComponent],
-    imports: [
-      RouterModule.forChild([
-        { path: '', component: PractitionerComponent, pathMatch: 'full' }
-      ]),
-      CommonModule,
+  imports: [
+    CommonModule,
+    RouterModule.forChild([
+      { path: 'onboarding', component: OnboardingPractitionerComponent, pathMatch: 'full' }
+    ]),
       ReactiveFormsModule,
+      SharedModule,
       DropDownsModule,
       BrowserAnimationsModule,
       ButtonsModule,
@@ -32,9 +32,11 @@ import { PractitionerRepositoryService } from './practitioner-repository.service
       DialogsModule,
       GridModule,
       InputsModule,
-      SharedModule,
       NotificationModule
-    ],
-    providers: [PractitionerRepositoryService]
-  })
-export class PractitionerModule { }
+  ],
+  declarations: [OnboardingPractitionerComponent],
+  providers: [
+    PractitionerRepositoryService
+  ]
+})
+export class OnboardingPractitionerModule { }

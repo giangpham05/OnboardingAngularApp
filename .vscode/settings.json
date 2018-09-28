@@ -1,4 +1,6 @@
 {
     "workbench.editor.enablePreview": false,
-    "workbench.editor.enablePreviewFromQuickOpen": false
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "editor.fontSize": 14,
+    "window.zoomLevel": 0.5
 }
