@@ -1,7 +1,7 @@
-//@import "~bootstrap/scss/bootstrap";
-
-
 @import "~@progress/kendo-theme-material/scss/all";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Roboto', sans-serif; }
+.cdk-overlay-container {
+    z-index: 1031 !important;
+}

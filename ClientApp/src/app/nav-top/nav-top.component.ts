@@ -6,4 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./nav-top.component.css']
 })
 export class NavTopComponent {
+  isExpanded = false;
+
+  collapse() {
+    this.isExpanded = false;
+  }
+
+  toggle() {
+    this.isExpanded = !this.isExpanded;
+  }
 }

@@ -12,7 +12,7 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
 import { NotificationModule } from '@progress/kendo-angular-notification';
 
 // Angular
-import { MatCardModule } from '@angular/material';
+import { MatCardModule, MatDividerModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -21,6 +21,7 @@ import { MatCardModule } from '@angular/material';
     ReactiveFormsModule,
 
     MatCardModule,
+    MatDividerModule,
 
     DropDownsModule,
     ButtonsModule,
@@ -36,6 +37,7 @@ import { MatCardModule } from '@angular/material';
     ReactiveFormsModule,
 
     MatCardModule,
+    MatDividerModule,
 
     DropDownsModule,
     ButtonsModule,
