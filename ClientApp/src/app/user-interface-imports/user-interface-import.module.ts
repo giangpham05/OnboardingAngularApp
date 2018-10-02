@@ -10,6 +10,7 @@ import { DialogsModule } from '@progress/kendo-angular-dialog';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { NotificationModule } from '@progress/kendo-angular-notification';
+import { RippleModule } from '@progress/kendo-angular-ripple';
 
 // Angular
 import { MatCardModule, MatDividerModule } from '@angular/material';
@@ -29,7 +30,8 @@ import { MatCardModule, MatDividerModule } from '@angular/material';
     DialogsModule,
     GridModule,
     InputsModule,
-    NotificationModule
+    NotificationModule,
+    RippleModule
   ],
   exports: [
     CommonModule,
@@ -45,7 +47,8 @@ import { MatCardModule, MatDividerModule } from '@angular/material';
     DialogsModule,
     GridModule,
     InputsModule,
-    NotificationModule
+    NotificationModule,
+    RippleModule
   ],
   declarations: []
 })

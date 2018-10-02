@@ -1,64 +1,82 @@
 <mat-card>
-    <div class="form-group row">
-        <div class="col-sm-4">
-            <kendo-textbox-container floatingLabel="First name" class="k-textbox-container" style="width: 100%;">
-                <input kendoTextBox />
-            </kendo-textbox-container>
-        </div>
-        <div class="col-sm-4">
-            <kendo-textbox-container floatingLabel="Last name" class="k-textbox-container" style="width: 100%;">
-                <input kendoTextBox />
-            </kendo-textbox-container>
-        </div>
-        <div class="col-sm-4">
-            <kendo-textbox-container floatingLabel="Email address" class="k-textbox-container" style="width: 100%;">
-                <input kendoTextBox />
-            </kendo-textbox-container>
-        </div>
+  <h5>PRACTITIONER SEARCH</h5>
+  <div class="form-group row" [formGroup] = "searchForm">
+    <div class="col-sm-3">
+      <kendo-textbox-container floatingLabel="First name" class="k-textbox-container">
+        <input kendoTextBox formControlName="FirstName" required/>
+      </kendo-textbox-container>
     </div>
-    <!-- <div class="form-group row">
-        <div class="col-sm-6">
-            <kendo-textbox-container floatingLabel="Last name" class="k-textbox-container">
-                <kendo-dropdownlist [data]="listItems"  [(ngModel)]="selectedValue" style='width: 100%;'>
-                  </kendo-dropdownlist>
-            </kendo-textbox-container>
-          </div>
-    </div> -->
+    <div class="col-sm-3">
+      <kendo-textbox-container floatingLabel="Last name" class="k-textbox-container">
+        <input kendoTextBox formControlName="LastName" required/>
+      </kendo-textbox-container>
+    </div>
+    <div class="col-sm-3">
+      <kendo-textbox-container floatingLabel="Email address" class="k-textbox-container">
+        <input kendoTextBox formControlName="Email" required email="true"/>
+      </kendo-textbox-container>
+    </div>
+    <div class="col-sm-3">
+      <div kendoRippleContainer>
+        <button type="button" [disabled]="!searchForm.valid" kendoButton [primary]="true" (click)='searchForPractitioner()'>Search</button>
+      </div>
+    </div>
+  </div>
 
-    <div class="form-group row">
-        <button kendoButton [primary]="true">Search</button>
+  <div class="form-group row">
+    <div class="col-sm-9">
+      <kendo-textbox-container floatingLabel="Practitioner(s) found" class="k-textbox-container">
+        <kendo-dropdownlist [data]="listItems" [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}">
+        </kendo-dropdownlist>
+      </kendo-textbox-container>
     </div>
-    <mat-card>
-        test
-    </mat-card>
+  </div>
 </mat-card>
 
-<mat-card style="margin-top:10px">
-    <form [formGroup]="departingPracForm">
-        <h5>COMMENCEMENT & DEPARTURE</h5>
-        <div class="form-group row">
-            <div class="col-sm-6">
-                <kendo-textbox-container floatingLabel="First name" class="k-textbox-container" style="width: 100%;">
-                    <input kendoTextBox formControlName="firstName" />
-                </kendo-textbox-container>
-            </div>
-            <div class="col-sm-6">
-                <kendo-textbox-container floatingLabel="Last name" class="k-textbox-container" style="width: 100%;">
-                    <input kendoTextBox formControlName="lastName" />
-                </kendo-textbox-container>
-            </div>
+<mat-card style="margin-top:10px; margin-bottom: 10px;">
+  <form [formGroup]="departingPracForm">
+    <h5>COMMENCEMENT & DEPARTURE</h5>
+    <div class="form-group row">
+      <div class="col-sm-4">
+        <kendo-textbox-container floatingLabel="Re-engage" class="k-textbox-container">
+          <input kendoTextBox />
+        </kendo-textbox-container>
+      </div>
+      <div class="col-sm-4">
+        <kendo-textbox-container floatingLabel="Commencement Date" class="k-textbox-container">
+          <input kendoTextBox />
+        </kendo-textbox-container>
+      </div>
+      <div class="col-sm-4">
+        <kendo-textbox-container floatingLabel="Notice Date" class="k-textbox-container">
+          <input kendoTextBox />
+        </kendo-textbox-container>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-4">
+        <kendo-textbox-container floatingLabel="Depature Date" class="k-textbox-container">
+          <input kendoTextBox />
+        </kendo-textbox-container>
+      </div>
+      <div class="col-sm-4">
+        <kendo-textbox-container floatingLabel="Depature Reason" class="k-textbox-container" style="width:100%;">
+          <kendo-dropdownlist [data]="departureReasons" [(ngModel)]="selectedReason">
+          </kendo-dropdownlist>
+        </kendo-textbox-container>
+      </div>
+      <div class="col-sm-8">
+        <kendo-textbox-container floatingLabel="Description" class="k-textbox-container" style="width:100%;">
+          <input kendoTextBox />
+        </kendo-textbox-container>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-3">
+        <div kendoRippleContainer>
+          <button kendoButton [primary]="true">Submit</button>
         </div>
-        <div class="form-group row">
-            <div class="col-sm-4">
-                <kendo-textbox-container floatingLabel="Email address" class="k-textbox-container" style="width: 100%;">
-                    <input kendoTextBox />
-                </kendo-textbox-container>
-            </div>
-            <div class="col-sm-4">
-                <kendo-textbox-container floatingLabel="Email address" class="k-textbox-container" style="width: 100%;">
-                    <input kendoTextBox />
-                </kendo-textbox-container>
-            </div>
-        </div>
-    </form>
+      </div>
+    </div>
+  </form>
 </mat-card>

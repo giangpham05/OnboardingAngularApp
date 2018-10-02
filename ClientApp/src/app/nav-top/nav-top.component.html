@@ -1,38 +1,39 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    <div class="container" style="padding-left: 0px; padding-right: 0px">
-        <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-            <img src="~/images/psg_logo.jpg" width="150" height="50" alt="">
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-            aria-controls="navbarResponsive" [attr.aria-expanded]='isExpanded' aria-label="Toggle navigation" (click)='toggle()'>
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive" [ngClass]="{'show': isExpanded}">
-            <div class="nav-item form-title">
-                <h4>Departing Practititoner</h4>
-            </div>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    D365 ADMIN
-                    <button mat-icon-button [matMenuTriggerFor]="menu">
-                        <mat-icon>more_vert</mat-icon>
-                    </button>
-                    <mat-menu #menu="matMenu">
-                        <button mat-menu-item (click)='collapse()'>
-                            <mat-icon>flight_land</mat-icon>
-                            <span>Onboarding Practitioner</span>
-                        </button>
-                        <button mat-menu-item (click)='collapse()'>
-                            <mat-icon>flight_takeoff</mat-icon>
-                            <span>Departing Practitioner</span>
-                        </button>
-                        <button mat-menu-item (click)='collapse()'>
-                            <mat-icon>exit_to_app</mat-icon>
-                            <span>Sign Out</span>
-                        </button>
-                    </mat-menu>
-                </li>
-            </ul>
-        </div>
+  <div class="container" style="padding-left: 0px; padding-right: 0px">
+    <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+      <img src="assets/images/psg_logo.jpg" width="130" height="40" alt="" />
+    </a>
+    <mat-divider [vertical]="true"></mat-divider>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+      [attr.aria-expanded]='isExpanded' aria-label="Toggle navigation" (click)='toggle()'>
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive" [ngClass]="{'show': isExpanded}">
+      <div class="nav-item form-title mx-auto text-center w-75 order-md-0">
+        <span>Departing Practititoner</span>
+      </div>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          D365 ADMIN
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)='collapse()'>
+              <mat-icon>flight_land</mat-icon>
+              <span>Onboarding Practitioner</span>
+            </button>
+            <button mat-menu-item (click)='collapse()'>
+              <mat-icon>flight_takeoff</mat-icon>
+              <span>Departing Practitioner</span>
+            </button>
+            <button mat-menu-item (click)='collapse()'>
+              <mat-icon>exit_to_app</mat-icon>
+              <span>Sign Out</span>
+            </button>
+          </mat-menu>
+        </li>
+      </ul>
     </div>
+  </div>
 </nav>
