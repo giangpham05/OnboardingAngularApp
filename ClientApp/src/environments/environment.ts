@@ -4,5 +4,10 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  adalConfig: {
+    tenant: 'my-tenant.onmicrosoft.com',
+    clientId: '00000000-0000-0000-0000-000000000000',
+    postLogoutRedirectUri: 'http://localhost:4200/logout'
+  },
 };

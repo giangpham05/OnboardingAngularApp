@@ -1,82 +1,89 @@
-<mat-card>
-  <h5>PRACTITIONER SEARCH</h5>
-  <div class="form-group row" [formGroup] = "searchForm">
-    <div class="col-sm-3">
-      <kendo-textbox-container floatingLabel="First name" class="k-textbox-container">
-        <input kendoTextBox formControlName="FirstName" required/>
-      </kendo-textbox-container>
-    </div>
-    <div class="col-sm-3">
-      <kendo-textbox-container floatingLabel="Last name" class="k-textbox-container">
-        <input kendoTextBox formControlName="LastName" required/>
-      </kendo-textbox-container>
-    </div>
-    <div class="col-sm-3">
-      <kendo-textbox-container floatingLabel="Email address" class="k-textbox-container">
-        <input kendoTextBox formControlName="Email" required email="true"/>
-      </kendo-textbox-container>
-    </div>
-    <div class="col-sm-3">
-      <div kendoRippleContainer>
-        <button type="button" [disabled]="!searchForm.valid" kendoButton [primary]="true" (click)='searchForPractitioner()'>Search</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <div class="col-sm-9">
-      <kendo-textbox-container floatingLabel="Practitioner(s) found" class="k-textbox-container">
-        <kendo-dropdownlist [data]="listItems" [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}">
-        </kendo-dropdownlist>
-      </kendo-textbox-container>
-    </div>
-  </div>
-</mat-card>
-
-<mat-card style="margin-top:10px; margin-bottom: 10px;">
-  <form [formGroup]="departingPracForm">
-    <h5>COMMENCEMENT & DEPARTURE</h5>
-    <div class="form-group row">
-      <div class="col-sm-4">
-        <kendo-textbox-container floatingLabel="Re-engage" class="k-textbox-container">
-          <input kendoTextBox />
+<div kendoRippleContainer>
+  <mat-card>
+    <h5>PRACTITIONER SEARCH</h5>
+    <div class="form-group row" [formGroup]="searchForm">
+      <div class="col-sm-3">
+        <kendo-textbox-container floatingLabel="First name" class="k-textbox-container">
+          <input kendoTextBox formControlName="FirstName" required />
         </kendo-textbox-container>
       </div>
-      <div class="col-sm-4">
-        <kendo-textbox-container floatingLabel="Commencement Date" class="k-textbox-container">
-          <input kendoTextBox />
+      <div class="col-sm-3">
+        <kendo-textbox-container floatingLabel="Last name" class="k-textbox-container">
+          <input kendoTextBox formControlName="LastName" required />
         </kendo-textbox-container>
       </div>
-      <div class="col-sm-4">
-        <kendo-textbox-container floatingLabel="Notice Date" class="k-textbox-container">
-          <input kendoTextBox />
+      <div class="col-sm-3">
+        <kendo-textbox-container floatingLabel="Email address" class="k-textbox-container">
+          <input kendoTextBox formControlName="Email" required email="true" />
         </kendo-textbox-container>
       </div>
-    </div>
-    <div class="form-group row">
-      <div class="col-sm-4">
-        <kendo-textbox-container floatingLabel="Depature Date" class="k-textbox-container">
-          <input kendoTextBox />
-        </kendo-textbox-container>
-      </div>
-      <div class="col-sm-4">
-        <kendo-textbox-container floatingLabel="Depature Reason" class="k-textbox-container" style="width:100%;">
-          <kendo-dropdownlist [data]="departureReasons" [(ngModel)]="selectedReason">
-          </kendo-dropdownlist>
-        </kendo-textbox-container>
-      </div>
-      <div class="col-sm-8">
-        <kendo-textbox-container floatingLabel="Description" class="k-textbox-container" style="width:100%;">
-          <input kendoTextBox />
-        </kendo-textbox-container>
-      </div>
-    </div>
-    <div class="form-group row">
       <div class="col-sm-3">
         <div kendoRippleContainer>
-          <button kendoButton [primary]="true">Submit</button>
+          <button type="button" [disabled]="!searchForm.valid" kendoButton [primary]="true" (click)='searchForPractitioner()'>Search</button>
         </div>
       </div>
     </div>
-  </form>
-</mat-card>
+
+    <div class="form-group row">
+      <div class="col-sm-9">
+        <kendo-textbox-container floatingLabel="Practitioner(s) found" class="k-textbox-container">
+          <kendo-dropdownlist [data]="listItems" [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}"
+            (valueChange)="onPractitionerValueChange($event)">
+          </kendo-dropdownlist>
+        </kendo-textbox-container>
+      </div>
+    </div>
+  </mat-card>
+
+  <mat-card style="margin-top:10px; margin-bottom: 10px;">
+    <form [formGroup]="departingPracForm" (submit)="onSubmitDepartingPract(departingPracForm.value)" novalidate>
+      <h5>COMMENCEMENT & DEPARTURE</h5>
+      <div class="form-group row">
+        <div class="col-sm-4">
+          <kendo-textbox-container floatingLabel="Re-engage" class="k-textbox-container">
+            <input kendoTextBox formControlName="ReEngage" required />
+          </kendo-textbox-container>
+        </div>
+        <div class="col-sm-4">
+          <kendo-textbox-container floatingLabel="Commencement Date" class="k-textbox-container">
+            <input kendoTextBox formControlName="CommencementDate" readonly />
+          </kendo-textbox-container>
+        </div>
+        <div class="col-sm-4">
+          <kendo-textbox-container floatingLabel="Notice Date" class="k-textbox-container">
+            <kendo-datepicker formControlName="NoticeDate" required [format]="'dd-MMM-yyyy'" [min]="min" [max]="max">
+            </kendo-datepicker>
+          </kendo-textbox-container>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-4">
+          <kendo-textbox-container floatingLabel="Depature Date" class="k-textbox-container">
+            <kendo-datepicker formControlName="DepatureDate" required [format]="'dd-MMM-yyyy'" [min]="min" [max]="max">
+            </kendo-datepicker>
+          </kendo-textbox-container>
+        </div>
+        <div class="col-sm-4">
+          <kendo-textbox-container floatingLabel="Depature Reason" class="k-textbox-container" style="width:100%;">
+            <kendo-dropdownlist [data]="departureReasons" formControlName="DepatureReason" required>
+            </kendo-dropdownlist>
+          </kendo-textbox-container>
+        </div>
+        <div class="col-sm-8">
+          <kendo-textbox-container floatingLabel="Description" class="k-textbox-container" style="width:100%;">
+            <input kendoTextBox formControlName="Description" required />
+          </kendo-textbox-container>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-3">
+          <div kendoRippleContainer>
+            <button kendoButton [primary]="true" type="submit" [disabled]="!departingPracForm.valid">Submit</button>
+          </div>
+        </div>
+      </div>
+    </form>
+    Form Valid: {{departingPracForm.valid}}
+  </mat-card>
+
+</div>

@@ -11,7 +11,7 @@ import { GridModule } from '@progress/kendo-angular-grid';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { NotificationModule } from '@progress/kendo-angular-notification';
 import { RippleModule } from '@progress/kendo-angular-ripple';
-
+import { UploadModule } from '@progress/kendo-angular-upload';
 // Angular
 import { MatCardModule, MatDividerModule } from '@angular/material';
 
@@ -31,7 +31,8 @@ import { MatCardModule, MatDividerModule } from '@angular/material';
     GridModule,
     InputsModule,
     NotificationModule,
-    RippleModule
+    RippleModule,
+    UploadModule
   ],
   exports: [
     CommonModule,
@@ -48,7 +49,8 @@ import { MatCardModule, MatDividerModule } from '@angular/material';
     GridModule,
     InputsModule,
     NotificationModule,
-    RippleModule
+    RippleModule,
+    UploadModule
   ],
   declarations: []
 })
